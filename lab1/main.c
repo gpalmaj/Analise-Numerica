@@ -2,8 +2,6 @@
 #include "matriz.h"
 #include <stdio.h>
 
-double vet_escalar (int n, double* v, double* w);
-
 int main (void)
 {
   /* Exemplo de construção de vetor dinâmico */
@@ -19,7 +17,17 @@ int main (void)
   //vet_imprime(2,w);
 
   double  produtovw = vet_escalar(2, v, w );
-  
+  double norma2v = vet_norma2(2,v);
+  printf("Analizando vetores V e W: ");
+  vet_iguais(2,v,w, 0.001);
+	
+  double * u = vet_cria(2);
+  u[0] = 1.02;
+  u[1] = 2.00;
+
+  printf("Analizando vetores V e U: ");
+  vet_iguais(2,v,u, 0.001);
+		
   /* Exemplo de construção de matriz dinâmica */
   double** A = mat_cria(3,2);
   A[0][0] = 1.0;
@@ -47,12 +55,3 @@ int main (void)
 } 
 
 
-double vet_escalar (int n, double* v, double* w){
-	double esc_prod = 0;
-	for (int i = 0; i<n; i++){
-		esc_prod = esc_prod+ v[i]*w[i];
-		printf("%f * %f\n", v[i], w[i]);
-	}
-	printf("produto escalar = %f\n", esc_prod);
-	return esc_prod; 
-}
