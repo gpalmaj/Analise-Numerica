@@ -5,8 +5,56 @@
 
 #define PI 3.141592653589793
 
+const char* atostring (int i)
+{
+  switch(i) {
+  case 0:
+	return "PI/12.0";
+    break;
+  case 1:
+	return "PI/9.0";
+	break;
+  case 2:
+	return "PI/7.0";
+    break;
+  case 3:
+	return "PI/4.0";
+    break;
+  case 4:  
+	return "PI/3.0";
+    break;
+  };	
+}
+
 int main (void)
 {
-  // escreva seu teste aqui
-  return 0;
+  //{
+  //  double a = 0.4 * PI;
+  //  printf("Seno:\n");
+  //  double v = sin(a);
+  //  printf("%.16g:  %.16g\n",a,v);
+  //  for (int n=1; n<=20; ++n) {
+  //    double v1 = avalia_seno(n,a);
+  //    double d = v-v1;
+  //    printf("%d: %.16g   %.16g\n",n,v1,d);
+  //  }
+  //
+  //  return 0;
+  //}
+
+  
+  double a[5] = {PI/12.0, PI/9.0, PI/7.0, PI/4.0, PI/3.0};
+  
+  printf("\nSeno:\n");
+  for (int i=0; i<5; ++i) {
+    double v = sin(a[i]);
+    printf("Teste avalia_seno com x = %s, onde o valor exato sen(%s) = %.10f\n", atostring(i), atostring(i),v);
+    for (int n=1; n<=10; ++n) {
+      double v1 = avalia_seno(n,a[i]);
+      double d = v-v1;
+      printf("Para n = %d: avalia_seno = %.10f e diferenca do valor exato = %.10f\n",n,v1,d); 
+    }
+  }
+
+   return 0;
 }
