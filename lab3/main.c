@@ -15,7 +15,7 @@ static void avaliagauss (int n, double **A, double* b)
   }
   double* x = vet_cria(n);
   
-  // TODO: chamar metodo gauss
+  gauss(n, A, b, x);
   
   printf("Vetor X:\n");
   for (int i = 0; i < n; ++i) {
